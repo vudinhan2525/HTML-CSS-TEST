@@ -7,6 +7,9 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 /* COMMON */
+:root{
+
+}
 html{
     scroll-behavior: smooth;
 }
@@ -19,6 +22,9 @@ ul {
 .row{
     margin-left: -8px;
     margin-right: -8px;
+}
+.mt-16{
+    margin-top: 16px;
 }
 .col{
     float: left;
@@ -60,7 +66,7 @@ ul {
     font-size: 14px;
     font-weight: 500;
     line-height: 46.5px;
-    display: inline-block;
+    display: block;
     color:black;
     text-decoration: none;
 }
@@ -94,15 +100,27 @@ ul {
 .nav .arrow-down{
     font-size: 14px;
 }
+#header .mobile-menu-btn{
+    float: right;
+    cursor: pointer;
+    display: none;
+}
 #header .search-button{
     float: right;
     cursor: pointer;
 }
+#header .menu-icon,
 #header .search-icon{
     padding: 0 24px;
     line-height: 46.5px;
     color: white;
     font-size: 18px;
+}
+#header .mobile-menu-btn:hover{
+    background-color: #ccc;
+}
+#header .mobile-menu-btn:hover .menu-icon{
+    color: #000;
 }
 #header .search-button:hover{
     background-color: red;
@@ -111,9 +129,8 @@ ul {
 #slider{
     position: relative;
     margin-top: 46.5px;
+    background: url(../img/silder/slider1.jpg) top center /cover no-repeat;
     padding-top: 50%;
-    background: url(/assets/img/silder/slider1.jpg) top center /cover no-repeat;
-
 }
 #slider .text-content{
     position: absolute;
@@ -133,15 +150,17 @@ ul {
     text-align: center;
     padding: 0 15px;
     font-weight: 600;
-
+    text-shadow:0 0 1px black;
 }
 #content{
 
 }
 #content .content-section{
     width: 800px;
+    max-width: 100%;
     height: 671px;
-    margin:0 auto;
+    margin-left:auto;
+    margin-right:auto;
     padding:64px 16px;
 }
 #content .heading-content{
@@ -216,7 +235,7 @@ ul {
     line-height: 1.5;
 }
 #content .tour-section .tour-places{
-    padding: 32px 0;
+    padding: 16px 0 32px 0;
 }
 /* #content .tour-section .place{
     width: 33.3333%;
@@ -260,9 +279,13 @@ ul {
     background-color: #ccc;
     color: #000;
 }
+#content .tour-places{
+    
+}
 /* Contact-section */
 #content .contact-section{
     padding:64px 16px;
+    max-width: 100%;
     width: 800px;
     margin: 0 auto;
 }
@@ -298,6 +321,7 @@ ul {
     line-height: 1.5;
     font-size: 15px;
     float: right;
+    -webkit-appearance: none;
 }
 .contact-sent:hover{
     background-color: #ccc;

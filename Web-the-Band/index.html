@@ -8,6 +8,7 @@
     <link rel="icon" href="./assets/img/silder/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
 </head>
 <body>
     <div id="the-band">
@@ -30,6 +31,10 @@
             </ul>
             <div class = "search-button">
                 <i class = "search-icon ti-search"></i>
+            </div>
+            <div id = "mobile-menu1" class="mobile-menu-btn">
+                <i class="menu-icon ti-menu">                  
+                </i>
             </div>
         </div>
         <div id="slider">
@@ -75,31 +80,31 @@
                         </li>
                     </ul>
                     <div class = "row tour-places">
-                        <div class="col col-3">
+                        <div class="col s-col-full col-3 mt-16">
                             <img src="./assets/img/silder/newyork.jpg" alt="" class = "img-tour">
                             <div class = "place-text">
                                 <p class = "tour-name">New York</p>
                                 <p class = "tour-date">Fri 27 Nov 2016</p>
                                 <p class="tour-content">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <button class = "place-button js-buy-ticket">Buy Tickets</button>
+                                <button class = "place-button s-full-width js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
-                        <div class="col col-3">
+                        <div class="col s-col-full col-3 mt-16">
                             <img src="./assets/img/silder/paris.jpg" alt="" class = "img-tour">
                             <div class = "place-text">
                                 <p class = "tour-name">Paris</p>
                                 <p class = "tour-date">Sat 28 Nov 2016</p>
                                 <p class="tour-content">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <button class = "place-button js-buy-ticket">Buy Tickets</button>
+                                <button class = "place-button s-full-width js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
-                        <div class="col col-3">
+                        <div class="col s-col-full col-3 mt-16">
                             <img src="./assets/img/silder/sanfran.jpg" alt="" class = "img-tour">
                             <div class = "place-text">
                                 <p class = "tour-name">San Francisco</p>
                                 <p class = "tour-date">Sun 29 Nov 2016</p>
                                 <p class="tour-content">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <button class = "place-button js-buy-ticket">Buy Tickets</button>
+                                <button class = "place-button s-full-width js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -110,18 +115,18 @@
                 <h2 class = "heading-content">CONTACT</h2>
                 <p class = "subheading-content">Fan? Drop a note!</p>
                 <div class="row contact-form">
-                    <div class="col col-2 contact-info">
-                        <p><i class="ti-location-pin"></i> Chicago, US</p>
-                        <p><i class="ti-mobile"></i> Phone: +00 151515</p>
-                        <p><i class="ti-email"></i> Email: mail@mail.com</p>
+                    <div class="col s-col-full col-2 contact-info">
+                        <p><i class="ti-location-pin"></i>Chicago, US</p>
+                        <p><i class="ti-mobile"></i>Phone: <a href="tel:+00 151515">+00 151515</a></p>
+                        <p><i class="ti-email"></i>Email: <a href="mailto:mail@mail.com">mail@mail.com</a></p>
                     </div>
-                    <div class="col col-2">
+                    <div class="col s-col-full col-2 contact-form-info">
                         <form action="">
                             <div class="row">
-                                <div class="col col-2 contact-input">
+                                <div class="col s-col-full col-2 contact-input">
                                     <input type="text" placeholder="Name" required class = "form-control">
                                 </div>
-                                <div class="col col-2 contact-input">
+                                <div class="col s-col-full col-2 contact-input">
                                     <input type="email" placeholder="Email" required class = "form-control">
                                 </div>
                                 <div class="clear"></div>
@@ -132,7 +137,7 @@
                                 </div>
                                 <div class="clear"></div>
                             </div>
-                            <input type="submit" value="SEND" class = "contact-sent">
+                            <input type="submit" value="SEND" class = "s-full-width contact-sent">
                         </form>
                     </div>
                     <div class="clear"></div>
@@ -148,7 +153,7 @@
                 <a href = "#"><i class="footer-icon ti-pinterest "></i></a>
                 <a href = "#"><i class="footer-icon ti-twitter-alt "></i></a>
                 <a href = "#"><i class="footer-icon ti-linkedin "></i></a>
-                <p class = "sponsor">Powered by <a href="#">w3.css</a></p>
+                <p class = "sponsor">Powered by <a href="##">w3.css</a></p>
             </div>
         </div>
     </div>
@@ -180,7 +185,7 @@
                 </button>
             </div>
             <div class="modal-footer">
-                <p class = "modal-help">Need <a href="#">help?</a></p>
+                <p class = "modal-help">Need <a href="##">help?</a></p>
             </div>    
         </div>
     </div>
@@ -203,6 +208,35 @@
         modalContainer.addEventListener('click',function(event){
             event.stopPropagation();
         })
+        // Đóng mở moblie-menu 
+        var header = document.getElementById('header');
+        var mobileMenu = document.getElementById('mobile-menu1');
+        var headerHeight = header.clientHeight;
+        mobileMenu.onclick = function(){
+            var isClose = (header.clientHeight === headerHeight);
+            if(isClose){
+                header.style.height = 'auto';
+            }
+            else{
+                header.style.height = null;
+            }
+        }
+
+        // Tự động đóng khi chọn menu
+        var menuItems = document.querySelectorAll('.nav li a[href*="#"]');
+        for(var i = 0;i < menuItems.length; i++){
+            var menuItem = menuItems[i];
+            console.log(menuItem.nextElementSibling);
+            menuItem.onclick = function(){
+                var isParentmenu = this.nextElementSibling && this.nextElementSibling.classList.contains('subnav');
+                if(!isParentmenu)   header.style.height = null;
+                else{
+                    event.preventDefault();
+                }
+            }
+        }
+
+
     </script>
 </body>
 </html>
