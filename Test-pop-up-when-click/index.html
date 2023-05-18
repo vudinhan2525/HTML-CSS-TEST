@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./fonts/themify-icons/themify-icons.css">
+</head>
+<body>
+    <div id = "toaster">
+        <!-- <div class ="toast toast--success">
+            <div class ="toast__icon">
+                <i class="ti-check-box"></i>
+            </div>
+            <div class ="toast__content">
+                <h3 class ="toast__title">Success</h3>
+                <p class ="toast__msg">Máy vi tính kết nối internet(Windows,MacOS,UBunTu)</p>
+            </div>
+            <div class ="toast__close">
+                <i class="ti-close"></i>
+            </div>
+        </div> -->
+        <!-- Info -->
+        <!-- <div class ="toast toast--info">
+            <div class ="toast__icon">
+                <i class="ti-info"></i>
+            </div>
+            <div class ="toast__content">
+                <h3 class ="toast__title">Info</h3>
+                <p class ="toast__msg">Máy vi tính kết nối internet(Windows,MacOS,UBunTu)</p>
+            </div>
+            <div class ="toast__close">
+                <i class="ti-close"></i>
+            </div>
+        </div> -->
+        <!-- Warning -->
+        <!-- <div class ="toast toast--warning">
+            <div class ="toast__icon">
+                <i class="ti-check-box"></i>
+            </div>
+            <div class ="toast__content">
+                <h3 class ="toast__title">Warning</h3>
+                <p class ="toast__msg">Máy vi tính kết nối internet(Windows,MacOS,UBunTu)</p>
+            </div>
+            <div class ="toast__close">
+                <i class="ti-close"></i>
+            </div>
+        </div> -->
+    </div>
+    <div class = "btn-dir">
+        <div onclick="ShowSuccessToast()" class="btn btn--success">Show success</div>
+        <div onclick="ShowErrorToast()" class="btn btn--error">Show eroor</div>
+    </div>
+    <script>    
+        function toast({title = '',message = 'info',type = '',duration = 3000}){
+            const main = document.getElementById('toaster');
+            if(main){
+                const toast = document.createElement('div');
+                const autoRemoveId = setTimeout(function(){
+                    main.removeChild(toast);
+                },duration + 1000);
+                toast.onclick = function(e){
+                    if(e.target.closest('.toast__close')){
+                        main.removeChild(toast);
+                        clearTimeout(autoRemoveId);
+                    }
+                }
+                const icons = {
+                    success: 'ti-check-box',
+                    info:'ti-info-alt',
+                    warning:'ti-info-alt'
+                }
+                toast.classList.add('toast',`toast--${type}`);
+                const delay = (duration / 1000).toFixed(2);
+                toast.style.animation = `slideInLeft ease 0.3s,fadeOut linear 1s ${delay}s forwards`;
+                toast.innerHTML = `
+                    <div class ="toast__icon">
+                        <i class="${icons[type]}"></i>
+                    </div>
+                    <div class ="toast__content">
+                        <h3 class ="toast__title">${title}</h3>
+                        <p class ="toast__msg">${message}</p>
+                    </div>
+                    <div class ="toast__close">
+                        <i class="ti-close"></i>
+                    </div>
+                `;           
+                main.appendChild(toast);
+            }
+        }
+        function ShowSuccessToast(){
+                toast({
+                title: 'Success',
+                message: 'Kết nối thành công',
+                type: 'success',
+                duration: 3000
+            });
+        }
+        function ShowErrorToast(){
+                toast({
+                title: 'Warning',
+                message: 'Kết nối internet thất bại',
+                type: 'warning',
+                duration: 3000
+            });
+        }
+    </script>
+</body>
+</html>
