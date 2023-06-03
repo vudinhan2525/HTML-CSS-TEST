@@ -320,11 +320,82 @@
     color:var(--primary-color);
 }
 /* Header Search */
+#header .user-control{
+    display: flex;
+}
+#header .mobile-search-icon{
+    height: var(--header-height);
+    text-align: center;
+    width: 50px;
+    display: none;
+}
+#header .mobile-search-icon i{
+    font-size: 2rem;
+    color: var(--white-color);
+    line-height: var(--header-height);
+}
+#header .nav-overlay{
+    position: fixed;
+    top:var(--header-height);
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: none;
+}
+#header .menu-mobile-icon{
+    height: var(--header-height);
+    width: 50px;
+    text-align: center;
+    display: none;
+}
+#header .menu-mobile-icon i{
+    color:var(--white-color);
+    font-size: 2rem;
+    line-height: var(--header-height);
+}
+#header .menu-mobile{
+    position: fixed;
+    top:var(--header-height);
+    left:0;
+    bottom:0;
+    background-color: var(--white-color);
+    width: 260px;
+    transform: translateX(-100%);
+    transition: transform linear 0.1s;
+    z-index: 101;
+}
+#header .menu-mobile__list{
+    margin-top:10px;
+    padding-left:0;
+}
+#header .menu-mobile__item{
+    padding:0 20px;
+}
+#header .menu-mobile__item a{
+    color:var(--black-color);
+    text-decoration: none;
+    font-size: 1.6rem;
+    padding:15px 8px;
+    display: block;
+    width: 100%;
+}
+#header #menu-input:checked ~ .nav-overlay{
+    display: block;
+}
+#header #menu-input:checked ~ .menu-mobile{
+    transform: translateX(0);
+}
+#menu-input{
+    display: none;
+}
 #header .search{
     height:var(--search-height);
     display: flex;
     margin:0 8px;
     align-items: center;
+    justify-content: space-between;
 }
 #header .search-logo{
     width: 200px;
@@ -507,6 +578,7 @@
     display: inline-block;
     padding:0 12px;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 #header .search-cart i{
     margin-top: 6px;
@@ -592,7 +664,7 @@
 #header .cart-list-item{
     padding-left: 0;
     margin:0 0;
-    height: 50vh;
+    max-height: 50vh;
     overflow-y:scroll;
 }
 #header .cart-item{
@@ -625,6 +697,7 @@
     text-align: left;
     flex:1;
     margin:0;
+    margin-right: 5px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -670,10 +743,85 @@
 #header .cart-view-cart:hover{
     background-color: #F05D41;
 }
+#header .sort-bar{
+    position: fixed;
+    left:0;
+    right:0;
+    height:var(--header-sort-bar-height);
+    top:var(--header-height);
+    background-color: var(--white-color);
+    list-style-type: none;
+    display: flex;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    z-index: 8;
+    display: none;
+}
+#header .sort-bar__item{
+    flex:1;
+    padding:8px 0;
+}
+#header .sort-bar__link{
+    display: block;
+    color:var(--black-color);
+    text-decoration: none;
+    font-size: 1.4rem;
+    line-height: 30px;
+    text-align: center;
+}
+#header .sort-bar__link--active{
+    color:var(--primary-color);
+}
 /* Container */
 #app_container {
     background-color: #F5F5F5;
 } 
+/* Mobile-category */
+.mobile-category{
+    display: none;
+}
+.mobile-category__list{
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+}
+.mobile-category__list::-webkit-scrollbar{
+    display: none;
+}
+.mobile-category__item{
+    flex-shrink: 0;
+    margin-right: 5px;
+}
+.mobile-category__item:nth-of-type(3n + 1) .mobile-category__link{
+    background-color: #87AFD8;
+}
+.mobile-category__item:nth-of-type(3n + 2) .mobile-category__link{
+    background-color: #76c9bd;
+}
+.mobile-category__item:nth-of-type(3n + 3) .mobile-category__link{
+    background-color: #88CF81;
+}
+.mobile-category__link{
+    --line-height:2.5rem;
+    text-decoration: none;
+    font-size: 1.5rem;
+    line-height: var(--line-height);
+    height: calc(var(--line-height) * 2);
+    text-align: center;
+    color: var(--white-color);
+    width: 110px;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    padding:0 4px;
+    border-radius: 4px;
+    font-weight: 300;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
 #app_container .category{
     background-color: var(--white-color);
     border-radius: 2px;
@@ -993,6 +1141,8 @@
 }
 .footer-main{
     border-top: 1px solid #ccc;
+    position: relative;
+    padding-bottom: 30px;
 }
 .footer__heading{
     font-size: 1.3rem;
